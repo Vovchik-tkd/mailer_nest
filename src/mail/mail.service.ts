@@ -17,7 +17,6 @@ export class MailService {
   }
 
   sendMail(options: Mail.Options) {
-    console.log('mail is send');
     return this.nodemailerTransport.sendMail(options);
   }
 }

@@ -8,10 +8,13 @@ export class AppService {
 
   @Cron('0 */10 * * * *')
   sendMail() {
-    this.mailService.sendMail({
-      to: 'vova.yubko200w@gmail.com',
-      subject: 'Hello',
-      text: 'Hello world',
-    });
+    this.mailService
+      .sendMail({
+        to: process.env.MAIL_TO,
+        subject: 'Hello',
+        text: 'Hello world',
+      })
+      .then(() => console.log('mail is send'))
+      .catch((err) => console.log('error' + err));
   }
 }
